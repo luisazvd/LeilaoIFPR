@@ -6,6 +6,8 @@ import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import DefaultLayout from './components/DefaultLayout';
 import SimpleLayout from './components/SimpleLayout';
+import Recover from './pages/recover/Recover';
+import Register from './pages/register/Register';
 
 
 function App() {
@@ -14,8 +16,12 @@ function App() {
     {/* <Header/> */}
       <BrowserRouter>
         <Routes>
-            <Route path='/' element={<DefaultLayout><Home/></DefaultLayout>}/>
-            <Route path='/login' element={<SimpleLayout><Login/></SimpleLayout>}/>
+          <Route path='/' element={<DefaultLayout><Home/></DefaultLayout>}/>
+          <Route path='/login' element={<SimpleLayout><Login/></SimpleLayout>}/>
+          <Route path='/recover' element={<SimpleLayout><Recover/></SimpleLayout>} />
+          <Route path='/register' element={<SimpleLayout><Register/></SimpleLayout>} />
+
+
         </Routes>
       </BrowserRouter>
     {/* <Footer/> */}
