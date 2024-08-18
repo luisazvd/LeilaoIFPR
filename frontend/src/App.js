@@ -8,7 +8,7 @@ import DefaultLayout from './components/DefaultLayout';
 import SimpleLayout from './components/SimpleLayout';
 import Recover from './pages/recover/Recover';
 import Register from './pages/register/Register';
-
+import AlterPassword from './pages/alterpassword/AlterPassword';
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
           <Route path='/login' element={<SimpleLayout><Login/></SimpleLayout>}/>
           <Route path='/recover' element={<SimpleLayout><Recover/></SimpleLayout>} />
           <Route path='/register' element={<SimpleLayout><Register/></SimpleLayout>} />
+          <Route path='/alterpassword' element={<SimpleLayout><AlterPassword /></SimpleLayout>} />
 
 
         </Routes>
