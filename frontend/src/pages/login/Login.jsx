@@ -40,9 +40,9 @@ const Login = () => {
                     <Password onChange={handleChange} name="password" id="password" placeholder="Digite sua senha" feedback={false} toggleMask inputClassName="password-input" />
                 </div>
                 <Button label="Recuperar Senha" className="p-button-link" onClick={() => window.location.href= '/recover'} />
-                <Button onClick={login} label="Login" className="p-button-raised p-button-rounded login-button" />
+                <Button onClick={login} label="Login" className="p-button-raised p-button-rounded login-button" />  
+                <Button label="Cadastre-se" className="p-button-link" onClick={() => window.location.href = '/register'} />
             </Card>
-            <Button label="Cadastre-se" className="p-button-raised p-button-rounded register-button" onClick={() => window.location.href = '/register'} />
         </div>
     );
 }

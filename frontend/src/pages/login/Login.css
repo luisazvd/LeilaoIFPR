@@ -6,6 +6,7 @@
     --button-background-color: #6b4e24;
     --button-border-color: #6b4e24;
     --link-color: #705938;
+    --link-color-2: #c99348;
     --register-button-bg-color: #d6ad60;
     --register-button-hover-bg-color: #b3873d;
     --recover-button-bg-color: #d6ad60;
@@ -65,19 +66,6 @@
     text-align: left;
     margin-top: 0%;
     margin-bottom: 15%;
-}
-
-.register-button {
-    margin-top: 1rem;
-    background-color: var(--register-button-bg-color);
-    border-color: var(--register-button-bg-color);
-    align-self: center;
-    width: 200px;
-}
-
-.register-button:hover {
-    background-color: var(--register-button-hover-bg-color);
-    border-color: var(--register-button-hover-bg-color);
 }
 
 .login-container .p-card-title {
