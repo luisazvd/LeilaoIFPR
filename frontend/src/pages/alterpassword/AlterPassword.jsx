@@ -6,32 +6,39 @@ import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHorse } from '@fortawesome/free-solid-svg-icons';
-import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { Divider } from 'primereact/divider';
+import { InputOtp } from 'primereact/inputotp'; 
 
 const AlterPassword = () => {
     const [password, setPassword] = useState("");
-    const [passwordCriteria, setPasswordCriteria] = useState({
-        length: false,
-        uppercase: false,
-        lowercase: false,
-        number: false,
-        specialChar: false,
-    });
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [isPasswordValid, setIsPasswordValid] = useState(false);
+    const [passwordsMatch, setPasswordsMatch] = useState(true);
+    const [otp, setOtp] = useState(""); 
+    const header = <h6>Requisitos da senha</h6>;
+    const footer = (
+        <>
+            <Divider />
+            <p className="mt-2">A senha deve conter:</p>
+            <ul className="pl-3 ml-2 mt-0 line-height-3">
+                <li>Mínimo de 6 caracteres</li>
+                <li>1 letra maiúscula</li>
+                <li>1 letra minúscula</li>
+                <li>1 número</li>
+                <li>1 caractere especial</li>
+            </ul>
+        </>
+    );
 
-    const validatePassword = (pass) => {
-        const length = pass.length >= 6;
-        const uppercase = /[A-Z]/.test(pass);
-        const lowercase = /[a-z]/.test(pass);
-        const number = /[0-9]/.test(pass);
-        const specialChar = /[!@#$%&*_+:;.?~]/.test(pass);
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
+        setIsPasswordValid(e.target.value.length >= 6);
+        setPasswordsMatch(e.target.value === confirmPassword);
+    };
 
-        setPasswordCriteria({
-            length,
-            uppercase,
-            lowercase,
-            number,
-            specialChar,
-        });
+    const handleConfirmPasswordChange = (e) => {
+        setConfirmPassword(e.target.value);
+        setPasswordsMatch(e.target.value === password);
     };
 
     return (
@@ -41,55 +48,52 @@ const AlterPassword = () => {
                     <label htmlFor="email">E-mail</label>
                     <InputText id="email" placeholder="Digite seu e-mail" className="p-inputtext-sm" />
                 </div>
+
                 <div className="p-field">
                     <label htmlFor="code">Código</label>
-                    <InputText id="code" placeholder="Digite o código recebido" className="p-inputtext-sm" />
+                    <InputOtp
+                        value={otp}
+                        onChange={(e) => setOtp(e.value)}
+                        length={4}  
+                        inputClassName="p-inputtext-sm otp-input"
+                        placeholder="Digite o código recebido"
+                    />
                 </div>
+
                 <div className="p-field">
                     <label htmlFor="password">Nova Senha</label>
                     <Password
                         id="password"
-                        placeholder="Digite sua nova senha"
-                        feedback={false}
+                        value={password}
+                        onChange={handlePasswordChange}
+                        header={header}
+                        footer={footer}
                         toggleMask
-                        inputClassName="password-input"
-                        onChange={(e) => {
-                            setPassword(e.target.value);
-                            validatePassword(e.target.value);
-                        }}
+                        feedback={true}
+                        inputClassName={isPasswordValid ? '' : 'p-invalid'}
+                        placeholder="Digite sua nova senha"
                     />
-                    <ul className="password-requirements">
-                        <li className={passwordCriteria.length ? "valid" : ""}>
-                            <FontAwesomeIcon icon={passwordCriteria.length ? faCheck : faTimes} className={passwordCriteria.length ? "icon-check" : "icon-times"} />
-                            Mínimo de 6 caracteres
-                        </li>
-                        <li className={passwordCriteria.uppercase ? "valid" : ""}>
-                            <FontAwesomeIcon icon={passwordCriteria.uppercase ? faCheck : faTimes} className={passwordCriteria.uppercase ? "icon-check" : "icon-times"} />
-                            1 letra maiúscula
-                        </li>
-                        <li className={passwordCriteria.lowercase ? "valid" : ""}>
-                            <FontAwesomeIcon icon={passwordCriteria.lowercase ? faCheck : faTimes} className={passwordCriteria.lowercase ? "icon-check" : "icon-times"} />
-                            1 letra minúscula
-                        </li>
-                        <li className={passwordCriteria.number ? "valid" : ""}>
-                            <FontAwesomeIcon icon={passwordCriteria.number ? faCheck : faTimes} className={passwordCriteria.number ? "icon-check" : "icon-times"} />
-                            1 número
-                        </li>
-                        <li className={passwordCriteria.specialChar ? "valid" : ""}>
-                            <FontAwesomeIcon icon={passwordCriteria.specialChar ? faCheck : faTimes} className={passwordCriteria.specialChar ? "icon-check" : "icon-times"} />
-                            1 caractere especial
-                        </li>
-                    </ul>
                 </div>
+
                 <div className="p-field">
                     <label htmlFor="confirm-password">Confirmar Senha</label>
-                    <Password id="confirm-password" placeholder="Confirme sua senha" feedback={false} toggleMask inputClassName="password-input" />
+                    <Password
+                        id="confirm-password"
+                        value={confirmPassword}
+                        onChange={handleConfirmPasswordChange}
+                        feedback={false}
+                        toggleMask
+                        inputClassName={passwordsMatch ? '' : 'p-invalid'}
+                        placeholder="Confirme sua senha"
+                    />
+                    {!passwordsMatch && <small className="p-error">As senhas não coincidem</small>}
                 </div>
-                <Button label="Alterar Senha" className="p-button-raised p-button-rounded alterar-senha-button" />
+
+                <Button label="Alterar Senha" className="p-button-raised p-button-rounded alterar-senha-button" disabled={!isPasswordValid || !passwordsMatch} />
             </Card>
             <Button label="Cancelar" className="p-button-raised p-button-rounded cancelar-button" onClick={() => window.location.href = '/login'} />
         </div>
     );
-}
+};
 
 export default AlterPassword;

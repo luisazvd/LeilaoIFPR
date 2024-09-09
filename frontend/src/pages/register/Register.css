@@ -1,3 +1,15 @@
+:root {
+    --background-color: #f5f3f0;
+    --card-background-color: rgba(255, 255, 255, 0.9);
+    --card-border-color: #d6ad60;
+    --text-color: #6b4e24;
+    --link-color: #705938;
+    --register-button-bg-color: #d6ad60;
+    --icon-color: #573f1f;
+    --success-color: #28a745;
+    --error-color: #dc3545;
+}
+
 .register-container {
     display: flex;
     flex-direction: column;
@@ -36,31 +48,13 @@
     border: 1px solid var(--text-color);
 }
 
-.password-requirements {
-    margin-top: 1rem;
-    list-style-type: none;
-    padding: 0;
+.password-input.p-invalid {
+    border: 1px solid var(--error-color);
 }
 
-.password-requirements li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.5rem;
-    color: #666;
-}
-
-.password-requirements li.valid {
-    color: var(--success-color);
-}
-
-.password-requirements .icon-check {
-    color: var(--success-color);
-    margin-right: 10px;
-}
-
-.password-requirements .icon-times {
+.p-error {
     color: var(--error-color);
-    margin-right: 10px;
+    font-size: 0.875rem;
 }
 
 .register-button {
