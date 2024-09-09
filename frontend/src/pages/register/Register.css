@@ -1,0 +1,84 @@
+:root {
+    --background-color: #f5f3f0;
+    --card-background-color: rgba(255, 255, 255, 0.9);
+    --card-border-color: #d6ad60;
+    --text-color: #6b4e24;
+    --link-color: #705938;
+    --register-button-bg-color: #d6ad60;
+    --icon-color: #573f1f;
+    --success-color: #28a745;
+    --error-color: #dc3545;
+}
+
+.register-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--background-color);
+    background-size: cover;
+    background-position: center;
+}
+
+.register-card {
+    width: 400px;
+    padding: 2rem;
+    background-color: var(--card-background-color);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--card-border-color);
+    margin-bottom: 20px;
+}
+
+.p-field {
+    margin-bottom: 1.5rem;
+}
+
+.p-field label {
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.p-inputtext-sm,
+.password-input {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 5px;
+    border: 1px solid var(--text-color);
+}
+
+.password-input.p-invalid {
+    border: 1px solid var(--error-color);
+}
+
+.p-error {
+    color: var(--error-color);
+    font-size: 0.875rem;
+}
+
+.register-button {
+    background-color: var(--register-button-bg-color);
+    border-color: var(--register-button-bg-color);
+}
+
+.cancel-button {
+    width: 100%;
+    color: var(--link-color);
+    text-align: left;
+    margin-top: 1rem;
+}
+
+.register-container .p-card-title {
+    color: var(--icon-color);
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.icon-horse {
+    color: var(--icon-color);
+    margin-right: 10px;
+    font-size: 1.5rem;
+    vertical-align: middle;
+}

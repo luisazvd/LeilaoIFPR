@@ -8,7 +8,8 @@ import DefaultLayout from './components/DefaultLayout';
 import SimpleLayout from './components/SimpleLayout';
 import Recover from './pages/recover/Recover';
 import Register from './pages/register/Register';
-
+import AlterPassword from './pages/alterpassword/AlterPassword';
+import PrivateRouter from './components/PrivateRouter';
 
 function App() {
   return (
@@ -16,10 +17,13 @@ function App() {
     {/* <Header/> */}
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<DefaultLayout><Home/></DefaultLayout>}/>
+          <Route element={<PrivateRouter/>}>
+            <Route path='/' element={<DefaultLayout><Home/></DefaultLayout>}/>
+          </Route>
           <Route path='/login' element={<SimpleLayout><Login/></SimpleLayout>}/>
           <Route path='/recover' element={<SimpleLayout><Recover/></SimpleLayout>} />
           <Route path='/register' element={<SimpleLayout><Register/></SimpleLayout>} />
+          <Route path='/alter-password' element={<SimpleLayout><AlterPassword /></SimpleLayout>} />
 
 
         </Routes>

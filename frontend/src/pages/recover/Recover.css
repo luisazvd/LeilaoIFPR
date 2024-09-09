@@ -1,0 +1,63 @@
+.recover-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--background-color);
+    background-size: cover;
+    background-position: center;
+}
+
+.recover-card {
+    width: 400px;
+    padding: 2rem;
+    background-color: var(--card-background-color);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--card-border-color);
+    margin-bottom: 20px;
+}
+
+.p-field {
+    margin-bottom: 1.5rem;
+}
+
+.p-field label {
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.p-inputtext-sm {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 5px;
+    border: 1px solid var(--text-color);
+}
+
+.recover-button {
+    width: 100%;
+    background-color: var(--recover-button-bg-color);
+    border-color: var(--recover-button-bg-color);
+}
+
+.cancel-button {
+    width: 100%;
+    color: var(--link-color);
+    text-align: left;
+    margin-top: 1rem;
+}
+
+.recover-container .p-card-title {
+    color: var(--icon-color);
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.icon-horse {
+    color: var(--icon-color);
+    margin-right: 10px;
+    font-size: 1.5rem;
+    vertical-align: middle;
+}
